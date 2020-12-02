@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<div class="container px-lg-3">
+    <div class="card text-center mx-auto" style="width: 36rem;">
+        <form method="post"  enctype="multipart/form-data" class="post-form"  action="/addsupplier">
+            {% csrf_token %}
+            <div class="card-header">
+                <h1>Add Supplier</h1>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <td style="text-align:left">
+                            <label>
+                                Supplier Name
+                            </label>
+                        </td>
+                        <td>
+                            <input type="text" name="name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left">
+                            <label>
+                                Contact Person
+                            </label>
+                        </td>
+                        <td>
+                            <input type="text" name="cperson">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left">
+                            <label>
+                                Address
+                            </label>
+                        </td>
+                        <td>
+                            <input type="text" name="address">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left">
+                            <label>
+                                Telephone No
+                            </label>
+                        </td>
+                        <td>
+                            <input type="text" name="phone">
+                        </td>
+                    </tr>
+                    <tr>
+                         <td style="text-align:left">
+                            <label>
+                                E-mail
+                            </label>
+                        </td>
+                        <td>
+                            <input type="text" name="email">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

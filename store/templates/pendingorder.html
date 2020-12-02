@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 mx-auto">
+            <div class="list-group">
+                <div class="accordion" id="accordionExample3">
+                    <div class="card">
+                        <div class="card-header" id="headingOne3">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                        data-target="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
+                                    Pending Orders
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseOne3" class="collapse show" aria-labelledby="headingOne3"
+                             data-parent="#accordionExample3">
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>O.No</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Date</th>
+                                        <th>Address</th>
+                                        <th>Phone</th>
+                                        <th>Amount</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    {% for x in ordermain %}
+                                    {% if x.status == 'o' %}
+
+                                    <tr>
+                                        <td>{{x.orderno}}</td>
+                                        <td>{{x.customer.first_name}}</td>
+                                        <td>{{x.customer.last_name}}</td>
+                                        <td>{{x.date}}</td>
+                                        <td>{{x.address}}</td>
+                                        <td>{{x.phone}}</td>
+                                        <td>{{x.totalamt}}</td>
+                                        <td>
+
+                                            <a href="/completed/{{x.id}}" >Complete</a>
+                                            /
+                                            <a href="/cancelorder/{{x.id}}" >Cancel</a>
+                                            /
+                                            <a href="/messageto/{{x.orderno}}" >Message</a>
+                                        </td>
+
+
+                                    </tr>
+                                    {% endif %}
+                                    {%endfor%}
+
+                                    </tbody>
+
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Message Form
+                </h5>
+                <hr>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="m-2 p-3">
+                    <form action="/check-out" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="checkbox" name="outofstock"> Out of Stock
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="outofstock"> You are not available at home
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="outofstock"> Delivered within 2 days
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="outofstock"> Send your proper address
+                        </div>
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                                                data-target="#collapseOne" aria-expanded="true"
+                                                aria-controls="collapseOne">
+                                            <a href="/messageto/{{x.id}}" class="btn btn-outline-info border rounded">Product Details</a>
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                     data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        {% for x in order %}
+                                        {{x.price}}
+                                        <br>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <input type="submit" class="btn float-right btn-outline-info col-lg-12"
+                                   value="Send Message">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+<br>
+<div class="container-fluid">
+	<div class="row">
+      <div class="col-lg-6 mx-auto">
+        <div class="list-group">
+          <div class="accordion" id="accordionExample1">
+            <div class="card">
+              <div class="card-header" id="headingOne1">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
+                    Product Details
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseOne1" class="collapse show" aria-labelledby="headingOne1" data-parent="#accordionExample1">
+                <div class="card-body ">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Item</th>
+                        <th>Desc</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                {% for x in product%}
+
+                    <tr>
+                        <td><img style="height: 30px;" class="rounded-circle" src="{{x.image.url}}" alt=""></td>
+                        <td>{{x.name}}</td>
+                        <td>{{x.category}}</td>
+                        <td>{{x.price|currency}}</td>
+                        <td>
+                            <a href="/edit/{{x.id}}"><span class="glyphicon glyphicon-pencil">Edit</span></a>
+                            /
+                            <a href="/deleteproduct/{{x.id}}"><span class="glyphicon glyphicon-pencil">Delete</span></a>
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mx-auto">
+        <div class="list-group">
+          <div class="accordion" id="accordionExample2">
+            <div class="card">
+              <div class="card-header" id="headingOne2">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Order Details
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne2" data-parent="#accordionExample2">
+                <div class="card-body">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>O.No</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                {% for x in ordermain reversed %}
+
+                    <tr>
+                        <td>{{x.orderno}}</td>
+                        <td>{{x.customer.last_name}}</td>
+                        <td>{{x.date}}</td>
+                        <td>{{x.address}}</td>
+                        <td>{{x.phone}}</td>
+                        <td>{{x.totalamt}}</td>
+                        {% if x.status == 'o' %}
+                          <td>
+                              <p style="background-color:grey; color: white; text-align:center">Pending</p>
+                          </td>
+                        {% elif x.status == 'c' %}
+                          <td>
+                              <p style="background-color:orange; color: white; text-align:center">Cancelled</p>
+                          </td>
+                        {% else %}
+                          <td>
+                              <p style="background-color:green; color: white; text-align:center">Delivered</p>
+                          </td>
+                        {% endif %}
+                    </tr>
+                  {%endfor%}
+
+            </tbody>
+
+                  </table>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

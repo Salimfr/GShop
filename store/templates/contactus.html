@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container px-lg-3">
+    <div class="card text-center mx-auto" style="width: 36rem;">
+        <form method="post"  enctype="multipart/form-data" class="post-form"  action="/contactus">
+            {% csrf_token %}
+            <div class="card-header">
+                <h1>Nous contacter</h1>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <td style="text-align:left">
+                            <label>
+                                Nom
+                            </label>
+                        </td>
+                        <td>
+                            <input type="text" name="first_name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left">
+                            <label>
+                                Prénom
+                            </label>
+                        </td>
+                        <td>
+                            <input type="text" name="last_name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left">
+                            <label>
+                                Téléphone
+                            </label>
+                        </td>
+                        <td>
+                            <input type="text" name="phone">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left">
+                            <label>
+                                E-mail
+                            </label>
+                        </td>
+                        <td>
+                            <input type="text" name="email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left">
+                            <label>
+                                Message
+                            </label>
+                        </td>
+                        <td>
+                            <textarea type="text" name="message">
+                            </textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="container px-lg-3">
+    <div class="card text-center mx-auto" style="width: 36rem;">
+        <form method="post"  enctype="multipart/form-data" class="post-form"  action="/contactus">
+            {% csrf_token %}
+            <div class="card-header">
+                <h1>notre adresse</h1>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <td style="text-align:left">
+                            <label style="text-align:left">
+                                contact
+                            </label>
+                        </td>
+                        <td style="text-align:left">
+                            <label style="text-align:left">
+                                Abdul
+                            </label>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left">
+                            <label>
+                                Adresse
+                            </label>
+                        </td>
+                        <td style="text-align:left">
+                            Ris Orangis
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left">
+                            <label>
+                                Téléphone
+                            </label>
+                        </td>
+                        <td style="text-align:left">
+                            98765432
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left">
+                            <label>
+                                E-mail
+                            </label>
+                        </td>
+                        <td style="text-align:left">
+                            indianstores@gmail.com
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

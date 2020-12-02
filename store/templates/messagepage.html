@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load custom_filter %}
+<div class="container">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title  mx-auto" id="exampleModalLabel">
+                    Message Form
+                </h5>
+                <hr>
+            </div>
+            <div class="modal-body">
+                <div class="m-2 p-3">
+                    <form action="/check-out" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="checkbox" name="outofstock"> Out of Stock
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="outofstock"> You are not available at home
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="outofstock"> Delivered within 2 days
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="checkbox1" value="outofstock1"> Send your proper address
+                        </div>
+                        {% if 'outofstock1' in 'checkbox1' %}
+                            <label name = "test" value ="outofstock1">Yes</label>
+                        {% else%}
+                            <label name = "test" value ="outofstock1">No</label>
+                        {% endif %}
+                        <input type="checkbox" name="is_closed" value="closed1" {% if 'closed1' in 'is_closed' %} checked {% else %} '' {% endif %}>
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                                                data-target="#collapseOne" aria-expanded="true"
+                                                aria-controls="collapseOne">
+                                            Product Details
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                     data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <table class="table">
+                                        {% for x in order %}
+
+                                                <tr>
+                                                <td><input type="checkbox" name="outofstock"></td>
+                                                    <td>{{x.product.name}}</td>
+                                                    <td>{{x.quantity}}</td>
+                                                    <td>{{x.price|currency}}</td>
+                                                </tr>
+
+                                        {% endfor %}
+                                            </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion" id="accordionExample2">
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                                                    data-target="#collapseTwo" aria-expanded="true"
+                                                    aria-controls="collapseTwo">
+                                                Messages
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                                         data-parent="#accordionExample2">
+                                        <div class="card-body">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" class="btn float-right btn-outline-info col-lg-12"
+                                       value="Send Message">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

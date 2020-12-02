@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>Indian Stores</title>
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    nav{
+      background-color: black;
+    }
+    .one-edge-shadow {
+              box-shadow: 0 8px 2px -5px rgb(246, 245, 245);
+}
+.display-8{
+  font-weight: 200;
+  font-size: 30px;
+}
+/*
+.nav-link[data-toggle].collapsed:before {
+    content: " ▾";
+}
+.nav-link[data-toggle]:not(.collapsed):before {
+    content: " ▴";
+} */
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.list-group-item{
+  color: black !important;
+}
+
+@media (min-width: 1000px) {
+  .sidemenu{
+      position: sticky;
+      top: 20px;
+  }
+
+  .toprightssssssssssssss{
+    position: sticky;
+      top: 20px;
+      z-index: 100;
+  }
+
+}
+
+.leftbar{
+  background-color: white !important;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("Fonts/Inter-Regular.woff2?v=3.15") format("woff2"),
+       url("Fonts/Inter-Regular.woff?v=3.15") format("woff");
+}
+
+.companylogo{
+  height: 40px;
+  width : 40px;
+  background-color: #007BFF !important;
+  color: white;
+  border-radius: 15%;
+  font-size: 25px;
+  padding-left: 7px;
+}
+
+.mainheading{
+  font-size: 30px;
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+}
+
+.searchbutton{
+  font-size: 20px;
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  background-color: white !important;
+  border-radius: 50px!important;
+}
+
+.searchbar{
+    border-radius: 50px!important;
+}
+
+.collapsing.width {
+    width: 0;
+    height: auto;
+    transition: width 5s linear 0s;
+}
+
+
+.logotitle{
+  font-size: 20px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+}
+
+
+.productcards{
+  border-radius: 12%;
+  border: none;
+}
+
+.addtocart{
+  background-color: #f4f5f9 !important;
+  border-radius: 17px!important;
+}
+
+.promobtn{
+  background-color: #f4f5f9 !important;
+  height: 60px;
+  border-color: #f0ad4ssse;
+  font-size: 17px;
+  font-family: Roboto, sans-serif;
+  font-weight: 200;
+}
+
+.promobtn:hover{
+  border-right: 5px solid #ffbd5e ;
+  background-color: #f4f5f9 !important;
+}
+
+
+.categorybuttons{
+    background-color: #f4f5f9 !important;
+    height: 50px;
+    color: black;
+    font-size: 16px;
+    font-family: Roboto, sans-serif;
+    border-right: 5px solid #2a96f5;
+}
+
+.categorybuttons:hover{
+  color: #2a96f5;
+  border-right: 5px solid #0275d8 ;
+  background-color: #f4f5f9 !important;
+}
+
+.smallcartbtns{
+    border-radius: 20px!important;
+}
+
+.cardimg{
+    height: 190px;
+    border-radius: 5%;
+    border-top-right-radius: 12%;
+    border-top-left-radius: 12%;
+    object-fit: cover;
+  }
+
+.productname{
+    font-size: 17px;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.instocktext{
+   font-weight: 600;
+}
+
+.topbuttons{
+  background: none !important;
+  color: #9c9c9c;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 15px;
+  border: 0px;
+  border-radius: 20px!important;
+}
+
+.topbuttons:hover{
+  background: white !important;
+  border: 0px;
+  border-radius: 20px!important;
+}
+
+.topbuttonsright{
+  background: white !important;
+  color: #0d236b;
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 20px!important;
+  padding: 10px;
+}
+
+.vl {
+  border-left: 1.5px solid gray;
+  opacity: 0.3;
+  min-height: 30px;
+}
+
+.notification {
+  position: relative;
+  display: inline-block;
+
+  background: white !important;
+  color: #0d236b;
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 20px!important;
+  padding: 10px;
+
+  width: 40px;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  padding: 5px 6px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+  </style>
+
+
+
+</head>
+
+<body style="background-color:#f4f5f9;">
+
+<script type="text/javascript">
+
+    AOS.init({
+  duration: 1500,  //FUNCTION FOR  ANIMATION FADE IN WHILE SCROLLING !!!
+})
+
+function myFunction() {
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('myInput');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myUL");
+  li = document.getElementsByClassName('card-body');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByClassName("card-title")[0];
+
+    if (a.innerText.toUpperCase().indexOf(filter) > -1) {
+      li[i].parentNode.style.display = "";
+    } else {
+      li[i].parentNode.style.display = "none";
+    }
+  }
+}
+</script>
+
+
+
+  <!-- navbar -->
+
+
+
+    {% block content %}{% endblock %}
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

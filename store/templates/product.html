@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+<div class="container px-lg-3">
+    <div class="card text-center mx-auto" style="width: 36rem;">
+        <form method="post" enctype="multipart/form-data" class="post-form" action="/ProductSave">
+            {% csrf_token %}
+            <div class="card-header">
+                <h1>Add Product</h1>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <div class="d-flex justify-content-start">Product Name</div>
+
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-start"><input type="text" name="name" id="name"></div>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-flex justify-content-start">Product Price</div>
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-start">
+                                <input type="text" name="price" id="price">
+                            </div>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-flex justify-content-start">Category</div>
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-start">
+                                <select name="category">
+                                    {% for x in categories %}
+                                        <option name="category">
+                                            {{x.name}}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-flex justify-content-start">Description</div>
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-start">
+                                <input type="text" name="description" id="description">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                         <td>
+                             <div class="d-flex justify-content-start">Image</div>
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-start">
+                                <input type="file" name="image" id="image">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

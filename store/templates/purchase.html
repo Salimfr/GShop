@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+<script language="javascript" type="text/javascript">
+function myFunction(abc) {
+
+  document.getElementById('tm').value = abc;
+  return false;
+}
+</script>
+
+
+<div class="container px-lg-5">
+    <div class = "row ">
+        <div class="col py-3 px-lg-5 border bg-light text-center"><h1>Purchase Order</h1></div>
+    </div>
+    <div class="row">
+        <div class="col col-6 border">
+            <table class="table">
+                <tr>
+                    <td>
+
+                        <label>
+
+                            Category Name
+                        </label>
+                    </td>
+                    <td>
+                        <select>
+                            {% for x in suppliers %}
+                                <option name="supplier" value="{{x.name}}">
+                                    {{x.name}}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Supplier Name
+                        </label>
+                    </td>
+                    <td>
+                        <select name="category">
+                            {% for x in categories %}
+                                <option name="category"  onchange="myFunction(this.value)" value="{{x.name}}">
+                                    {{x.name}}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Product Name
+                        </label>
+                    </td>
+                    <td>
+                        <select name="product">
+                            {% for x in products %}
+                                <option name="product">
+                                    {{x.name}}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <label>
+                        Quantity
+                        </label>
+                    </td>
+                    <td>
+                        <input type="text" id="tm">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <label>
+                            Product Price
+                        </label>
+                    </td>
+                    <td>
+                        <input type="text">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button type ="button">
+                            Reset
+                        </button>
+                    </td>
+                    <td>
+                        <button type ="button">
+                            Add to List
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col col-6 border">
+            <p class="text-primary text-center">Supplier Name</p>
+            <table class="table">
+                <thead>
+                    <th>
+                        No
+                    </th>
+                     <th>
+                        Product
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                </thead>
+            </table>
+        </div>
+
+    </div>
+    <div class = "row">
+        <button type="button" class="btn btn-primary btn-lg btn-block">Confirm Purchase</button>
+    </div>
+</div>
+
+{% endblock %}

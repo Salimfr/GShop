@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load cart %}
+{% load custom_filter %}
+<!-- body -->
+<div class="container-fluid">
+	<div class="row">
+		<!-- filter -->
+		<div class="col-lg-2 mx-auto leftbar" >
+			<div class="list-group sidemenu">
+				<div class="row ml-1">
+					<div class="companylogo">
+						<i class="fas fa-chart-pie"></i>
+					</div>
+					<h6 class="logotitle ml-2 align-bottom pt-2">Indian Foods</h6>
+				</div>
+
+				<button  type="submit" class="mt-5 btn btn-light promobtn text-left mb-3">
+					<i class="fas fa-star text-warning mr-1"></i>
+
+					Promotions
+
+				</button>
+
+				<ul class="nav flex-column flex-nowrap overflow-hidden">
+					<li class="nav-item">
+						<button class="btn btn-light btn-lg categorybuttons  text-left pl-3 w-100 collapsed" href="#submenu1"
+						   data-toggle="collapse" data-target="#submenu1"><i class="fas fa-carrot mr-1 text-primary"></i> Alimentaire</button>
+
+						<div class="collapse" id="submenu1" aria-expanded="false">
+							<a href="/?category={{category.id}}"
+									class="list-group-item  bg-light ml-2 mt-2">Epiceries</a>
+
+							<a class="list-group-item  bg-light ml-2 mt-2 collapsed" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1"><span>Indienne <i class="fas fa-angle-down rotate-icon"></i></span></a>
+
+							<div class="collapse" id="submenu1sub1" aria-expanded="false">
+									<a class="list-group-item  bg-light ml-4 mt-2" href="#">Daily </a>
+
+									<a class="list-group-item  bg-light ml-4 mt-2" href="#">Dashboard </a>
+							</div>
+						</div>
+					</li>
+
+
+					<li class="nav-item">
+						<button class="btn btn-light btn-lg categorybuttons align-middle text-left pl-3 w-100 collapsed mt-3" href="#submenu2"
+						   data-toggle="collapse" data-target="#submenu2"><i class="fas fa-wine-bottle mr-1 text-primary"></i> Boissons</button>
+
+						<div class="collapse" id="submenu2" aria-expanded="false">
+							<a href="/?category={{category.id}}"
+									class="list-group-item  bg-light ml-2 mt-2">Alcoolique</a>
+
+							<a class="list-group-item  bg-light ml-2 mt-2 collapsed" href="#submenu2sub2" data-toggle="collapse" data-target="#submenu2sub2"><span>Non Alcoolique <i class="fas fa-angle-down rotate-icon text-right"></i></span></a>
+
+							<div class="collapse" id="submenu2sub2" aria-expanded="false">
+									<a class="list-group-item  bg-light ml-4 mt-2" href="#">Daily </a>
+
+									<a class="list-group-item  bg-light ml-4 mt-2" href="#">Dashboard </a>
+							</div>
+						</div>
+					</li>
+
+					<li class="nav-item">
+						<button class="btn btn-light btn-lg categorybuttons align-middle text-left pl-3 w-100 collapsed mt-3" href="#submenu3"
+						   data-toggle="collapse" data-target="#submenu3"><i class="fas fa-truck mr-1 text-primary"></i> Colis</button>
+
+						<div class="collapse" id="submenu3" aria-expanded="false">
+							<a href="/?category={{category.id}}"
+									class="list-group-item  bg-light ml-2 mt-2">Alcoolique</a>
+
+							<a class="list-group-item  bg-light ml-2 mt-2 collapsed" href="#submenu3sub3" data-toggle="collapse" data-target="#submenu3sub3"><span>Non Alcoolique <i class="fas fa-angle-down rotate-icon text-right"></i></span></a>
+
+							<div class="collapse" id="submenu3sub3" aria-expanded="false">
+									<a class="list-group-item  bg-light ml-4 mt-2" href="#">Daily </a>
+
+									<a class="list-group-item  bg-light ml-4 mt-2" href="#">Dashboard </a>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- all products -->
+		<div id='products' class="col-lg-10 mx-auto mt-4 mr-3">
+
+
+			<div class="row topright">
+				<div class="col-6">
+					<button class="btn btn-light topbuttons"><i class="far fa-compass"></i> accueil</button>
+					<button class="btn btn-light topbuttons"><i class="far fa-comments"></i> nous contacter</button>
+				</div>
+
+				<div class="col-6 ">
+
+					<button class="btn btn-light topbuttonsright float-right ml-2"><i class="fas fa-sign-in-alt mr-1"></i> mon compte</button>
+					<button class="btn btn-light topbuttonsright float-right"><i class="fas fa-user-plus mr-1"></i> créer un compte</button>
+					<div class="vl float-right mr-2 mt-2"></div>
+
+					<a href="#" class="notification float-right mr-3">
+					  <span style="padding-left:4px;"><i class="far fa-bell" ></i></span>
+					  <span class="badge">2</span>
+					</a>
+
+					<a href="#" class="notification float-right mr-3">
+					  <span ><i class="fas fa-shopping-cart" ></i></span>
+					  <span class="badge">3</span>
+					</a>
+				</div>
+
+			</div>
+
+			<div class="row">
+				<h6 class="col mainheading mt-5 ml-5 mb-3">Tous Les Produits</h6>
+
+				<input class="col-4 form-control collapse width searchbar mt-5 ml-5 mb-2" id="myInput" onkeyup="myFunction()" type="search" placeholder="Cherchez un produit!">
+				<h6 class="col-1 mt-5"><button data-toggle="collapse" data-target="#myInput" class="btn searchbutton float-right mr-3"><i class="fas fa-search"></i></button></h6>
+
+			</div>
+
+
+			<div class="row mx-auto pl-4 pr-4 mt-4" data-aos="fade-up">
+				{% for product in products %}
+				<div class="card mx-auto mb-4 productcards" id="cardid"  style="width: 19rem;">
+					<img class="card-img-top cardimg" src="{{product.image.url}}" alt="Card image cap">
+
+					<div class="card-body ">
+
+						<p class="card-title text-center productname mt-1">{{product.name}}</p>
+						<div class="row pt-2">
+							<p class="col-6 text-success instocktext">En Stock</p>
+							<p class="col-6 card-text text-right pricetext"><b>{{product.price|currency}}</b> / kg</p>
+
+						</div>
+						<!-- {{product | is_in_cart:request.session.cart }} -->
+
+
+						{% if product|is_in_cart:request.session.cart %}
+						<div class="row no-gutters">
+							<form action="/#{{product.id}}" class="col-2 " method="post">
+								{% csrf_token %}
+								<input hidden type="text" name='product' value='{{product.id}}'>
+								<input hidden type="text" name='remove' value='True'>
+								<input type="submit" value=" - " class="smallcartbtns btn btn-block btn-light border-right">
+							</form>
+
+							<div class="text-center col mt-2">{{product|cart_quantity:request.session.cart}} in Cart</div>
+
+							<form action="/#{{product.id}}" class="col-2 " method="post">
+								{% csrf_token %}
+								<input hidden type="text" name='product' value='{{product.id}}'>
+								<input type="submit" value=" + " class="smallcartbtns btn btn-block btn-light border-left">
+							</form>
+							<form action="/#{{product.id}}" method="POST" class="col-4 ml-2 btn-block">
+							{% csrf_token %}
+								<input hidden type="text" name='product' value='{{product.id}}'>
+								<input type="submit" class="float-right btn btn-light addtocart form-control "
+									value="Valider">
+							</form>
+						</div>
+						{% else %}
+						<form action="/#{{product.id}}" method="POST" class=" btn-block">
+							{% csrf_token %}
+							<input hidden type="text" name='product' value='{{product.id}}'>
+							<input type="submit" class="float-right btn btn-light addtocart form-control "
+								value="Ajouter Au Panier">
+						</form>
+						{% endif %}
+
+
+					</div>
+
+
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}

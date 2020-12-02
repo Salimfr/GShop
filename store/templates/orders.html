@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+<br>
+<br>
+<div class="container">
+    <div class="row col-5 mx-auto">
+        <div class="d-flex justify-content-start">
+            <h1>Your Orders</h1>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="container">
+
+    <div class="row col-8 mx-auto">
+        <div class="d-flex justify-content-center"></div>
+        {% for ordermain in ordermains %}
+<br>
+        <br>
+        <br>
+<br>
+        <div class="col col-lg-9">
+            {% if ordermain.status == 'd' %}
+            <div class="card text-white bg-success mx-auto mb-8" id={{product.id}} style="width: 18rem;">
+                {% elif ordermain.status == 'c' %}
+                <div class="card text-white bg-warning mx-auto mb-8" id={{product.name}} style="width: 18rem;">
+                    {% else %}
+                    <div class="card text-black bg-light mx-auto mb-8" id={{product.desc}} style="width: 18rem;">
+                        {% endif %}
+                        <p class="card-title">Order No : {{ordermain.orderno}}</p>
+                        <p class="card-title">Order Date : {{ordermain.date}}</p>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Desc</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for order in orders %}
+                            {% if ordermain.orderno == order.orderno %}
+                            <tr>
+                                <td><img style="height: 40px;" class="rounded-circle" src="{{order.product.image.url}}"
+                                         alt="">
+                                </td>
+                                <td>{{order.product.name}}</td>
+                                <td>{{order.price|currency}}</td>
+                                <td>{{order.quantity}}</td>
+                                <td>{{order.quantity|multiply:order.price|currency}}</td>
+                                {% if ordermain.status == 'o' %}
+                                <td>
+                                    <button type="button" class="btn btn-primary" aria-label="Close">
+                                                        <span aria-hidden="true">
+                                                            &times;
+                                                        </span>
+                                    </button>
+                                </td>
+                                {% endif %}
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    {% if ordermain.status == 'o' %}
+                                    <h3><a href="/cancelorder/{{ordermain.id}}">Cancel</a></h3>
+                                    {% endif %}
+                                </td>
+                                <td class="text-right">
+
+                                    <h3 class="card-title">Total : {{ordermain.totalamt}}</h3>
+
+                                </td>
+                                <td class="text-right">
+
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="mt-3 col-md-12 col-6 mx-auto">
+
+                </div>
+                {%endfor%}
+
+            </div>
+
+            {% endblock %}
